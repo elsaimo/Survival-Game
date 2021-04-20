@@ -7,7 +7,9 @@
 
 using namespace std;
 
-enum LandTypes {LAKE, FOREST, DESERT, MAX_NUM_LANDS};
+enum LandTypes {LAKE, FOREST, DESERT, 
+                OCEAN,JUNGLE,CITY,MILITARYBASE,WARZONE,
+                MAX_NUM_LANDS};
 
 class Land {
     public:
@@ -45,7 +47,58 @@ class Desert : public Land {
     private:
 };
 
+//start my code 
+class Ocean : public Land {
+    public:
+    string getShortDescription();
+    string getLongDescription();
+    string visit(Player &p);
+    
+    private:
+};
+
+class Jungle  : public Land{
+    public:
+    string getShortDescription();
+    string getLongDescription();
+    string visit(Player &p);
+    
+    private:
+}; 
+
+class City  : public Land {
+    public:
+    string getShortDescription();
+    string getLongDescription();
+    string visit(Player &p);
+    
+    private:
+};
+
+class MilitaryBase : public Land {
+    public:
+    string getShortDescription();
+    string getLongDescription();
+    string visit(Player &p);
+    
+    private:
+}; 
+
+
+class WarZone : public Land {
+    public:
+    string getShortDescription();
+    string getLongDescription();
+    string visit(Player &p);
+    
+    private:
+    
+};
+
+// ended my code 
+
 Land* getRandomLand(void);
 
 
 #endif
+

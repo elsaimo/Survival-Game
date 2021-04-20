@@ -38,6 +38,8 @@ bool getPlayerInput(PlayerChoice &playerChoice){
     return true;
 }
 
+// less 20-> bad  
+// more than zero -> good 
 
 int main(){
     const unsigned int MAP_SIZE = 20;
@@ -63,22 +65,67 @@ int main(){
         player.newTurn();
         
         // Give description of surroundings
-        unsigned int x = player.getX();
-        unsigned int y = player.getY();
+        int x = player.getX();
+        int y = player.getY();
         
+        cout << "x: " << x << endl;
+        cout << "y: " << y << endl;
+        
+        
+
+        if (y >= 19){
+            player.setY(0);  // working fine
+            //break;
+        }
+        if (y <= 0){
+            player.setY(19);
+            //break;
+        }
+        
+        if (x>= 19){
+            player.setX(0);  // working fine
+            //break;
+        }
+        if (x <= 0){
+            player.setX(19); 
+            //break;
+        }
+
+
         cout << map[x][y]->getLongDescription() << endl << endl;
         cout << map[x][y]->visit(player) << endl << endl;
         
         cout << player.printStats() << endl << endl;
         
         // TODO: Handle boundry conditions
-        cout << "To the north you see a " << map[x][y + 1]->getShortDescription() << endl;
-        cout << "To the south you see a " << map[x][y - 1]->getShortDescription() << endl;
-        cout << "To the east you see a " << map[x + 1][y]->getShortDescription() << endl;
-        cout << "To the west you see a " << map[x - 1][y]->getShortDescription() << endl;
+        if (y ==19){
+            cout << "To the north you see a " << map[x][0]->getShortDescription() << endl;
+        }else {
+            cout << "To the north you see a " << map[x][y + 1]->getShortDescription() << endl;
+        }
+        
+        
+        if (y == 0){
+            cout << "To the south you see a " << map[x][19]->getShortDescription() << endl;
+        }else {
+            cout << "To the south you see a " << map[x][y - 1]->getShortDescription() << endl;
+        }
+        
+        if (x == 19){
+            cout << "To the east you see a " << map[0][y]->getShortDescription() << endl;
+        }else {
+            cout << "To the east you see a " << map[x + 1][y]->getShortDescription() << endl;
+        }
+        
+        if (x == 0){
+            cout << "To the west you see a " << map[19][y]->getShortDescription() << endl;
+        }else {
+            cout << "To the west you see a " << map[x - 1][y]->getShortDescription() << endl;
+        }
         
         PlayerChoice playerChoice;
         while(!getPlayerInput(playerChoice));
+        
         
         switch(playerChoice){
             case NORTH:
@@ -93,6 +140,7 @@ int main(){
             case WEST:
                 player.setX(player.getX() - 1);
                 break;
+                
             default:
                 cout << "Invalid input found: " << playerChoice << endl;
                 break;

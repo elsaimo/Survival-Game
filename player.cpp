@@ -1,7 +1,7 @@
 #include "player.h"
 
-Player::Player(unsigned int health, unsigned int hunger, unsigned int thirst,
-        unsigned int x, unsigned int y){
+Player::Player( int health,  int hunger,  int thirst,
+         int x,  int y){
     this->health = health;
     this->hunger = hunger;
     this->thirst = thirst;
@@ -9,43 +9,43 @@ Player::Player(unsigned int health, unsigned int hunger, unsigned int thirst,
     this->y = y;
 }
 
-unsigned int Player::getX() const{
+ int Player::getX() const{
     return x;
 }
 
-unsigned int Player::getY() const{
+ int Player::getY() const{
     return y;
 }
 
-void Player::setX(unsigned int newX){
+void Player::setX(int newX){
     x = newX;
 }
 
-void Player::setY(unsigned int newY){
+void Player::setY(int newY){
     y = newY;
 }
 
-unsigned int Player::getHunger() const{
+ int Player::getHunger() const{
     return hunger;
 }
 
-unsigned int Player::getThirst() const{
+ int Player::getThirst() const{
     return thirst;
 }
 
-unsigned int Player::getHealth() const{
+ int Player::getHealth() const{
     return health;
 }
 
-void Player::setThirst(unsigned int t){
+void Player::setThirst( int t){
     thirst = t;
 }
 
-void Player::setHunger(unsigned int h){
+void Player::setHunger( int h){
     hunger = h;
 }
 
-void Player::setHealth(unsigned int h){
+void Player::setHealth( int h){
     health = h;
 }
 
